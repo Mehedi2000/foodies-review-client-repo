@@ -12,7 +12,7 @@ const About = () => {
           />
         </div>
         <div className="w-1/2">
-          <h1 className="text-4xl font-bold">About Us</h1>
+          <h1 className="text-4xl font-bold">About Us !</h1>
           <p className="py-6 font-semibold">
             We Make Everything By Hand With <br />
             The Best Possible Ingredients.

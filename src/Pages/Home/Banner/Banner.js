@@ -6,7 +6,7 @@ const Banner = () => {
     <div className="relative z-0">
       <div className="banner-container">
         <div className="banner z-20">
-          <div className="pt-20 pl-20 z-40">
+          <div className="pt-16 pl-20 z-40">
             <h2 className="text-white text-4xl font-bold">
               Good Food <br />
               Choice Are <br />
