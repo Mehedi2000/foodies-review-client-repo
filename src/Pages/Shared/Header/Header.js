@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    logOut().then().catch();
+  };
   return (
     <div className="navbar bg-base-200">
       <div className="navbar-start">
@@ -26,24 +32,34 @@ const Header = () => {
             tabIndex={0}
             className="menu text-red-700 font-medium menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <Link to="/my-reviews">My Reviews</Link>
-            </li>
-            <li>
-              <Link to="/add-service">Add Service</Link>
-            </li>
-            <li>
-              <Link to="/login">Log In</Link>
-            </li>
-            <li>
-              <Link to="/logout">Log Out</Link>
-            </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
-            <li>
-              <Link to="/blogs">Blogs</Link>
-            </li>
+            {user?.email ? (
+              <>
+                <li>
+                  <Link to="/my-reviews">My Reviews</Link>
+                </li>
+                <li>
+                  <Link to="/add-service">Add Service</Link>
+                </li>
+                <li>
+                  <Link onClick={handleSignOut}>Log Out</Link>
+                </li>
+                <li>
+                  <Link to="/blogs">Blogs</Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="/register">Register</Link>
+                </li>
+                <li>
+                  <Link to="/login">LogIn</Link>
+                </li>
+                <li>
+                  <Link to="/blogs">Blogs</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <Link
@@ -55,24 +71,34 @@ const Header = () => {
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0 text-red-700 font-medium">
-          <li>
-            <Link to="/my-reviews">My Reviews</Link>
-          </li>
-          <li>
-            <Link to="/add-service">Add Service</Link>
-          </li>
-          <li>
-            <Link to="/login">Log In</Link>
-          </li>
-          <li>
-            <Link to="/logout">Log Out</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-          <li>
-            <Link to="/blogs">Blogs</Link>
-          </li>
+          {user?.email ? (
+            <>
+              <li>
+                <Link to="/my-reviews">My Reviews</Link>
+              </li>
+              <li>
+                <Link to="/add-service">Add Service</Link>
+              </li>
+              <li>
+                <Link onClick={handleSignOut}>Log Out</Link>
+              </li>
+              <li>
+                <Link to="/blogs">Blogs</Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to="/register">Register</Link>
+              </li>
+              <li>
+                <Link to="/login">LogIn</Link>
+              </li>
+              <li>
+                <Link to="/blogs">Blogs</Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </div>
