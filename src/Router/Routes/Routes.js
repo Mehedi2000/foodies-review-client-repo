@@ -36,13 +36,16 @@ export const router = createBrowserRouter([
       {
         path: "/services",
         element: <AllServices></AllServices>,
-        loader: () => fetch("http://localhost:5000/allServices"),
+        loader: () =>
+          fetch("https://foodies-review-server.vercel.app/allServices"),
       },
       {
         path: "/service/:id",
         element: <ServiceDetails></ServiceDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allServices/${params.id}`),
+          fetch(
+            `https://foodies-review-server.vercel.app/allServices/${params.id}`
+          ),
       },
       {
         path: "/my-reviews",

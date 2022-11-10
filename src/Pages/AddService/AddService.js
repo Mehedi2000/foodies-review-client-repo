@@ -8,7 +8,7 @@ const AddService = () => {
   const handleAddService = (event) => {
     event.preventDefault();
     console.log(service);
-    fetch("http://localhost:5000/allServices", {
+    fetch("https://foodies-review-server.vercel.app/allServices", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -1,6 +1,6 @@
 <h1>Project Name : FOODIES</h1>
 
-<h4>Live Website Link : </h4>
+<h4>Live Website Link :https://foodies-review-client.web.app/ </h4>
 
 <h2>Technologies Used</h2>
 <ul>
