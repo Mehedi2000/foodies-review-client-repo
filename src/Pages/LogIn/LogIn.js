@@ -27,7 +27,7 @@ const LogIn = () => {
       })
       .catch((err) => console.error(err));
   };
-
+  // google login
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
       .then((result) => {
