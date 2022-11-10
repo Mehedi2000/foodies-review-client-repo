@@ -5,6 +5,7 @@ const ServiceDetails = () => {
   const service = useLoaderData();
   const { title, img, description, price } = service;
   return (
+    // service details
     <div className="card card-compact w-96 bg-base-100 shadow-xl mx-auto my-10">
       <figure>
         <img src={img} className="h-52" alt="Shoes" />
