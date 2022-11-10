@@ -1,9 +1,11 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 
 const LogIn = () => {
-  const { login } = useContext(AuthContext);
+  const { login, providerLogin } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,6 +26,16 @@ const LogIn = () => {
         navigate(from, { replace: true });
       })
       .catch((err) => console.error(err));
+  };
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        // form.reset();
+      })
+      .catch((error) => console.log(error));
   };
   return (
     <div className="hero min-h-screen bg-base-200 my-10 w-3/4 mx-auto rounded-2xl">
@@ -62,7 +74,9 @@ const LogIn = () => {
             </div>
             <p className="text-xl text-center font-medium">Or</p>
             <div className="form-control">
-              <button className="btn btn-primary">Google</button>
+              <button onClick={handleGoogleSignIn} className="btn btn-primary">
+                Google LogIn
+              </button>
             </div>
             <p className="text-xl font-bold text-center">
               New User?
