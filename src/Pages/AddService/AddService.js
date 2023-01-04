@@ -38,15 +38,6 @@ const AddService = () => {
         Please add a new service
       </h2>
       <form className="grid w-2/5 mx-auto" onSubmit={handleAddService}>
-        <input
-          onBlur={handleInputBlur}
-          type="text"
-          name="service_id"
-          id=""
-          placeholder="service id"
-          required
-          className="input input-bordered"
-        />
         <br />
         <input
           onBlur={handleInputBlur}

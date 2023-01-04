@@ -1,15 +1,23 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Loading from "../../Shared/Loading/Loading";
 import ServiceCard from "./ServiceCard";
 
 const Services = () => {
-  const [services, setServices] = useState([]);
-
-  useEffect(() => {
-    fetch("https://foodies-review-server.vercel.app/services")
-      .then((res) => res.json())
-      .then((data) => setServices(data));
-  }, []);
+  const { data: services = [], isLoading } = useQuery({
+    queryKey: ["allServices"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://foodies-review-server.vercel.app/services"
+      );
+      const data = await res.json();
+      return data;
+    },
+  });
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   return (
     <div className="my-10">
       <div className="text-center mb-6">

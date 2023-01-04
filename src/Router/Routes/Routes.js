@@ -9,6 +9,7 @@ import ServiceDetails from "../../Pages/Home/Services/ServiceDetails";
 import LogIn from "../../Pages/LogIn/LogIn";
 import MyReview from "../../Pages/MyReview/MyReview";
 import Register from "../../Pages/Register/Register";
+import Update from "../../Pages/Update/Update";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 export const router = createBrowserRouter([
@@ -36,8 +37,6 @@ export const router = createBrowserRouter([
       {
         path: "/services",
         element: <AllServices></AllServices>,
-        loader: () =>
-          fetch("https://foodies-review-server.vercel.app/allServices"),
       },
       {
         path: "/service/:id",
@@ -62,6 +61,12 @@ export const router = createBrowserRouter([
             <AddService></AddService>
           </PrivateRoutes>
         ),
+      },
+      {
+        path: "/update/:id",
+        element: <Update></Update>,
+        loader: ({ params }) =>
+          fetch(`https://foodies-review-server.vercel.app/review/${params.id}`),
       },
     ],
   },

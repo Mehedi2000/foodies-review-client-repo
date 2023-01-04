@@ -35,6 +35,9 @@ const Header = () => {
             {user?.email ? (
               <>
                 <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
                   <Link to="/my-reviews">My Reviews</Link>
                 </li>
                 <li>
@@ -49,6 +52,9 @@ const Header = () => {
               </>
             ) : (
               <>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
                 <li>
                   <Link to="/register">Register</Link>
                 </li>
@@ -74,6 +80,9 @@ const Header = () => {
           {user?.email ? (
             <>
               <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
                 <Link to="/my-reviews">My Reviews</Link>
               </li>
               <li>
@@ -88,6 +97,9 @@ const Header = () => {
             </>
           ) : (
             <>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
               <li>
                 <Link to="/register">Register</Link>
               </li>

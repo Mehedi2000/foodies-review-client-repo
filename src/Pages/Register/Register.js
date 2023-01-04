@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 
@@ -20,6 +21,7 @@ const Register = () => {
         console.log(user);
         form.reset();
         handleUpdateUserProfile(name, photoURL);
+        toast.success("User Created Successfully");
       })
       .catch((err) => console.error(err));
   };

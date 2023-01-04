@@ -1,8 +1,23 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import Loading from "../../Shared/Loading/Loading";
 
 const AllServices = () => {
-  const services = useLoaderData();
+  // const services = useLoaderData();
+  const { data: services = [], isLoading } = useQuery({
+    queryKey: ["allServices"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://foodies-review-server.vercel.app/allServices"
+      );
+      const data = await res.json();
+      return data;
+    },
+  });
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   return (
     <div>
       <h2 className="mt-10 text-3xl font-bold text-center">
@@ -11,7 +26,10 @@ const AllServices = () => {
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-4/5 mx-auto my-10">
         {services.map((service) => {
           return (
-            <div className="card card-compact w-64 bg-base-100 shadow-xl">
+            <div
+              key={service._id}
+              className="card card-compact w-64 bg-base-100 shadow-xl"
+            >
               <figure>
                 <img src={service.img} className="h-52" alt="Shoes" />
               </figure>
